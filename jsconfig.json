@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "target": "es2018"
+  },
+  "exclude": [".cache", "coverage", "build", "node_modules"]
+}
