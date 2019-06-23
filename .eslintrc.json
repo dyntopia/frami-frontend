@@ -122,7 +122,8 @@
       "error",
       {
         "allowModules": [
-          "react-test-renderer"
+          "enzyme",
+          "enzyme-adapter-react-16"
         ]
       }
     ],
