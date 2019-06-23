@@ -3,6 +3,9 @@ const babel = {
     '@babel/preset-env',
     '@babel/preset-react',
   ],
+  plugins: [
+    '@babel/plugin-transform-runtime',
+  ],
 };
 
 /* eslint-disable no-undef, import/no-commonjs */
