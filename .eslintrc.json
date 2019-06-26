@@ -77,7 +77,13 @@
     "import/no-self-import": "error",
     "import/no-useless-path-segments": "error",
     "import/no-webpack-loader-syntax": "error",
-    "import/order": ["error", { "newlines-between": "always" }],
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "groups": ["builtin", "external", "internal"]
+      }
+    ],
 
     /* eslint-plugin-jest */
     "jest/consistent-test-it": [
