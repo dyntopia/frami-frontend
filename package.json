@@ -54,7 +54,8 @@
   "jest": {
     "bail": true,
     "setupFiles": [
-      "<rootDir>/tests/setup/enzyme.js"
+      "<rootDir>/tests/setup/enzyme.js",
+      "<rootDir>/tests/setup/i18n.js"
     ],
     "testMatch": [
       "<rootDir>/tests/**/*.test.{js,jsx,ts,tsx}"
