@@ -14,8 +14,8 @@ import { Conditional } from './Conditional';
 import { Routes } from './Routes';
 import { Content } from './Content';
 
-const App = () => {
-  const [user, setUser] = useState(window.user || {});
+const App = ({ user: userObj }) => {
+  const [user, setUser] = useState(userObj);
   const { t } = useTranslation();
 
   return (

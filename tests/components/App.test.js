@@ -7,7 +7,7 @@ describe('App', () => {
   test('render', () => {
     expect.assertions(1);
 
-    const wrapper = mount(<App />);
+    const wrapper = mount(<App user={{}} />);
     expect(wrapper.children()).not.toHaveLength(0);
   });
 });
