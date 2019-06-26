@@ -53,6 +53,14 @@
   },
   "jest": {
     "bail": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
     "setupFiles": [
       "<rootDir>/tests/setup/enzyme.js",
       "<rootDir>/tests/setup/i18n.js"
