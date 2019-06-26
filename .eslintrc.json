@@ -129,7 +129,8 @@
       {
         "allowModules": [
           "enzyme",
-          "enzyme-adapter-react-16"
+          "enzyme-adapter-react-16",
+          "nock"
         ]
       }
     ],
