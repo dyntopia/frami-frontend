@@ -1,12 +1,19 @@
 const en = {
   translation: {
     label: {
-      username: 'Username',
-      password: 'Password',
-      login: 'Login',
+      email: 'Email',
       home: 'Home',
+      login: 'Login',
+      name: 'Name',
+      password: 'Password',
+      patient: 'Patient',
+      role: 'Role',
+      staff: 'Staff',
+      username: 'Username',
+      users: 'Users',
     },
     message: {
+      apiError: 'Could not retrieve data',
       invalidCredentials: 'Invalid credentials',
     },
   },
