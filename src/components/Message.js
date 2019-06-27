@@ -3,6 +3,7 @@ import CheckCircle from '@material-ui/icons/CheckCircle';
 import Close from '@material-ui/icons/Close';
 import Error from '@material-ui/icons/Error';
 import IconButton from '@material-ui/core/IconButton';
+import Portal from '@material-ui/core/Portal';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { green } from '@material-ui/core/colors';
@@ -35,22 +36,24 @@ const Message = ({ text, type, open, onClose }) => {
   const anchor = { vertical: 'bottom', horizontal: 'center' };
 
   return (
-    <Snackbar open={open} anchor={anchor}>
-      <SnackbarContent
-        className={classes[type]}
-        action={
-          <IconButton aria-label="close" color="inherit" onClick={onClose}>
-            <Close />
-          </IconButton>
-        }
-        message={
-          <span className={classes.message}>
-            <Icon className={classes.icon} />
-            {text}
-          </span>
-        }
-      />
-    </Snackbar>
+    <Portal>
+      <Snackbar open={open} anchor={anchor}>
+        <SnackbarContent
+          className={classes[type]}
+          action={
+            <IconButton aria-label="close" color="inherit" onClick={onClose}>
+              <Close />
+            </IconButton>
+          }
+          message={
+            <span className={classes.message}>
+              <Icon className={classes.icon} />
+              {text}
+            </span>
+          }
+        />
+      </Snackbar>
+    </Portal>
   );
 };
 
