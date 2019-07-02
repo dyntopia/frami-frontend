@@ -5,13 +5,13 @@ import { Field, Form as MForm } from '../form';
 import { Conditional } from '../Conditional';
 import { Retrieve } from '../Retrieve';
 
-const DataForm = ({ id, data, to }) => {
+const DataForm = ({ uid, data, to }) => {
   const [done, setDone] = useState(false);
 
   return (
     <MForm
-      deleteUrl={id && `/api/user/${id}/`}
-      saveUrl={id ? `/api/user/${id}/` : '/api/user/'}
+      deleteUrl={uid && `/api/user/${uid}/`}
+      saveUrl={uid ? `/api/user/${uid}/` : '/api/user/'}
       data={data || {}}
       onDone={() => setDone(true)}
     >
@@ -26,21 +26,21 @@ const DataForm = ({ id, data, to }) => {
   );
 };
 
-const Form = ({ id, isStaff, ...props }) => {
+const Form = ({ uid, isStaff, ...props }) => {
   /* eslint-disable camelcase */
   const data = { is_staff: isStaff };
   /* eslint-enable camelcase */
 
   return (
     <>
-      <Conditional cond={id}>
-        <Retrieve url={`/api/user/${id}/`} method="GET">
-          <DataForm id={id} {...props} />
+      <Conditional cond={uid}>
+        <Retrieve url={`/api/user/${uid}/`} method="GET">
+          <DataForm uid={uid} {...props} />
         </Retrieve>
       </Conditional>
 
-      <Conditional cond={!id}>
-        <DataForm id={id} data={data} {...props} />
+      <Conditional cond={!uid}>
+        <DataForm id={uid} data={data} {...props} />
       </Conditional>
     </>
   );

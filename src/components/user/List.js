@@ -27,11 +27,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Cell = ({ id, page, children }) => {
+const Cell = ({ uid, page, children }) => {
   const classes = useStyles();
   return (
     <TableCell>
-      <Link className={classes.link} to={`/${page}/${id}/`}>
+      <Link className={classes.link} to={`/${page}/${uid}/`}>
         {children}
       </Link>
     </TableCell>
@@ -41,14 +41,17 @@ const Cell = ({ id, page, children }) => {
 const Row = ({ data, page }) => {
   const { t } = useTranslation();
   const role = data.is_staff ? t('label.staff') : t('label.patient');
+  const name = (data.first_name || data.last_name) ?
+    `${data.first_name} ${data.last_name}` :
+    t('label.unknown');
 
   return (
     <Conditional cond={page === 'staff' ? data.is_staff : !data.is_staff}>
       <TableRow hover>
-        <Cell id={data.id} page={page}>{data.first_name} {data.last_name}</Cell>
-        <Cell id={data.id} page={page}>{data.username}</Cell>
-        <Cell id={data.id} page={page}>{data.email}</Cell>
-        <Cell id={data.id} page={page}>{role}</Cell>
+        <Cell uid={data.id} page={page}>{name}</Cell>
+        <Cell uid={data.id} page={page}>{data.username}</Cell>
+        <Cell uid={data.id} page={page}>{data.email}</Cell>
+        <Cell uid={data.id} page={page}>{role}</Cell>
       </TableRow>
     </Conditional>
   );
@@ -83,7 +86,7 @@ const List = ({ page }) => {
         aria-label="Add user"
         className={classes.add}
         component={Link}
-        to={`/${page}/new/`}
+        to={`/${page}/add/`}
       >
         <Add />
       </Fab>

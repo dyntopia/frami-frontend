@@ -30,12 +30,22 @@ const Routes = ({ user, onLogin }) => {
         />
         <Route
           exact
-          path="/patient/:action?/"
+          path="/patient/:uid(\d+)?/"
           render={(props) => <PatientView {...props} page="patient" />}
         />
         <Route
           exact
-          path="/staff/:action?/"
+          path="/patient/:add/"
+          render={(props) => <PatientView {...props} page="patient" />}
+        />
+        <Route
+          exact
+          path="/staff/:uid(\d+)?/"
+          render={(props) => <StaffView {...props} page="staff" />}
+        />
+        <Route
+          exact
+          path="/staff/:add/"
           render={(props) => <StaffView {...props} page="staff" />}
         />
       </Switch>
