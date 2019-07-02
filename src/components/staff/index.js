@@ -1,4 +1,4 @@
-import { Patients } from './Patients';
-import { Staff } from './Staff';
+import { PatientList } from './PatientList';
+import { StaffList } from './StaffList';
 
-export { Patients, Staff };
+export { PatientList, StaffList };

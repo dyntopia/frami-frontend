@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import { Ipsum } from './Ipsum';
 import { Login } from './Login';
-import { Patients, Staff } from './staff';
+import { PatientList, StaffList } from './staff';
 
 const Routes = ({ user, onLogin }) => {
   return (
@@ -27,8 +27,8 @@ const Routes = ({ user, onLogin }) => {
               <Login {...props} onSuccess={onLogin} />
           )}
         />
-        <Route exact path="/patients/" component={Patients} />
-        <Route exact path="/staff/" component={Staff} />
+        <Route exact path="/patients/" component={PatientList} />
+        <Route exact path="/staff/" component={StaffList} />
       </Switch>
     </>
   );
