@@ -28,8 +28,16 @@ const Routes = ({ user, onLogin }) => {
               <Login {...props} onSuccess={onLogin} />
           )}
         />
-        <Route exact path="/patient/" component={PatientView} />
-        <Route exact path="/staff/" component={StaffView} />
+        <Route
+          exact
+          path="/patient/:action?/"
+          render={(props) => <PatientView {...props} page="patient" />}
+        />
+        <Route
+          exact
+          path="/staff/:action?/"
+          render={(props) => <StaffView {...props} page="staff" />}
+        />
       </Switch>
     </>
   );
