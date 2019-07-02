@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const en = {
   translation: {
     label: {
@@ -7,6 +8,7 @@ const en = {
       name: 'Name',
       password: 'Password',
       patient: 'Patient',
+      patient_plural: 'Patients',
       role: 'Role',
       staff: 'Staff',
       username: 'Username',
@@ -18,5 +20,6 @@ const en = {
     },
   },
 };
+/* eslint-enable camelcase */
 
 export { en };

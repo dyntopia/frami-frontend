@@ -7,23 +7,26 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { useTranslation } from 'react-i18next';
 
-import { Retrieve } from './Retrieve';
+import { Conditional } from '../Conditional';
+import { Retrieve } from '../Retrieve';
 
-const UserRow = ({ data }) => {
+const Row = ({ data, type }) => {
   const { t } = useTranslation();
   const role = data.is_staff ? t('label.staff') : t('label.patient');
 
   return (
-    <TableRow>
-      <TableCell>{data.first_name} {data.last_name}</TableCell>
-      <TableCell>{data.username}</TableCell>
-      <TableCell>{data.email}</TableCell>
-      <TableCell>{role}</TableCell>
-    </TableRow>
+    <Conditional cond={type === 'staff' ? data.is_staff : !data.is_staff}>
+      <TableRow>
+        <TableCell>{data.first_name} {data.last_name}</TableCell>
+        <TableCell>{data.username}</TableCell>
+        <TableCell>{data.email}</TableCell>
+        <TableCell>{role}</TableCell>
+      </TableRow>
+    </Conditional>
   );
 };
 
-const UserList = () => {
+const Users = ({ type }) => {
   const { t } = useTranslation();
 
   return (
@@ -39,7 +42,7 @@ const UserList = () => {
         </TableHead>
         <TableBody>
           <Retrieve url="/api/user/" method="GET">
-            <UserRow />
+            <Row type={type} />
           </Retrieve>
         </TableBody>
       </Table>
@@ -47,4 +50,4 @@ const UserList = () => {
   );
 };
 
-export { UserList };
+export { Users };
