@@ -6,12 +6,14 @@ import { APIContext } from '../context';
 import { Message } from './Message';
 import { Progress } from './Progress';
 
+const log = debug('app:Retrieve:log');
 const error = debug('app:Retrieve:error');
 
 const retrieve = async (api, method, url, data, onSuccess, onFailure) => {
   try {
-    const result = await api({ method, url, data });
-    onSuccess(result.data);
+    const { data: result } = await api({ method, url, data });
+    log('%s %s %o %o', method, url, data, result);
+    onSuccess(Array.isArray(result) ? result : [result]);
   } catch (err) {
     error(err);
     onFailure(err);
