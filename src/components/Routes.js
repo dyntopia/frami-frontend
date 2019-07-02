@@ -27,7 +27,7 @@ const Routes = ({ user, onLogin }) => {
               <Login {...props} onSuccess={onLogin} />
           )}
         />
-        <Route exact path="/patients/" component={PatientList} />
+        <Route exact path="/patient/" component={PatientList} />
         <Route exact path="/staff/" component={StaffList} />
       </Switch>
     </>
