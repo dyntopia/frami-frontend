@@ -26,7 +26,7 @@ const Row = ({ data, type }) => {
   );
 };
 
-const UserList = ({ type }) => {
+const List = ({ type }) => {
   const { t } = useTranslation();
 
   return (
@@ -50,4 +50,4 @@ const UserList = ({ type }) => {
   );
 };
 
-export { UserList };
+export { List };
