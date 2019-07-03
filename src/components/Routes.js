@@ -35,6 +35,11 @@ const Routes = ({ user, onLogin }) => {
         />
         <Route
           exact
+          path="/patient/:uid(\d+)/:menu?/:mid(\d+)?"
+          render={(props) => <PatientView {...props} page="patient" />}
+        />
+        <Route
+          exact
           path="/patient/:add/"
           render={(props) => <PatientView {...props} page="patient" />}
         />
