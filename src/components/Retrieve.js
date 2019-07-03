@@ -10,9 +10,10 @@ const log = debug('app:Retrieve:log');
 const error = debug('app:Retrieve:error');
 
 const retrieve = async (api, method, url, data, onSuccess, onFailure) => {
+  log('%s %s %o', method, url, data);
   try {
     const { data: result } = await api({ method, url, data });
-    log('%s %s %o %o', method, url, data, result);
+    log('%o', result);
     onSuccess(Array.isArray(result) ? result : [result]);
   } catch (err) {
     error(err);
