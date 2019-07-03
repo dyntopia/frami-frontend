@@ -1,17 +1,17 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { Menu } from './Menu';
 import { Form } from './Form';
 import { List } from './List';
+import { View as PrescriptionView } from '../prescription';
 
 const View = (props) => {
   const { match: { params: { add, uid } }, page } = props;
-  const { t } = useTranslation();
 
   if (uid) {
     const menus = [
-      [`/${page}/${uid}/profile/`, t('label.profile'), Form],
+      [`/${page}/${uid}/profile/`, 'profile', Form],
+      [`/${page}/${uid}/prescription/`, 'prescription', PrescriptionView],
     ];
     return <Menu {...props} uid={uid} menus={menus} />;
   }
