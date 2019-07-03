@@ -4,6 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import React, { useState } from 'react';
+import Typography from '@material-ui/core/Typography';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -22,7 +23,10 @@ const App = ({ user: userObj }) => {
     <BrowserRouter>
       <CssBaseline />
       <Box display="flex">
-        <TopBar user={user} />
+        <TopBar user={user}>
+          <Typography>{user && user.username}</Typography>
+        </TopBar>
+
         <Conditional cond={user.id}>
           <Navigation>
             <List>

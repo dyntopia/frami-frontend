@@ -4,11 +4,15 @@ import { mount } from 'enzyme';
 import { TopBar } from '../../src/components/TopBar';
 
 describe('TopBar', () => {
-  test('username', () => {
+  test('children', () => {
     expect.assertions(1);
 
     const text = 'abcdefoobarbazqux';
-    const wrapper = mount(<TopBar user={{ id: 123, username: text }} />);
+    const wrapper = mount(
+      <TopBar>
+        <span>{text}</span>
+      </TopBar>
+    );
     expect(wrapper.html()).toContain(text);
   });
 });
