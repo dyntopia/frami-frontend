@@ -3,11 +3,14 @@ const webpack = {
   devServer: {
     host: process.env.HOST || '127.0.0.1',
     port: process.env.PORT || '8000',
-    watchContentBase: true,
   },
+  devtool: process.env.WEBPACK_DEV_SERVER && 'source-map',
   module: {
     rules: [{
-      exclude: /node_modules/u,
+      exclude: [
+        /\.git/u,
+        /node_modules/u,
+      ],
       use: {
         loader: 'babel-loader',
       },
