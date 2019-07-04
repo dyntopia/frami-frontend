@@ -1,5 +1,7 @@
+import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import ExitToApp from '@material-ui/icons/ExitToApp';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -23,8 +25,16 @@ const App = ({ user: userObj }) => {
     <BrowserRouter>
       <CssBaseline />
       <Box display="flex">
-        <TopBar user={user}>
+        <TopBar>
           <Typography>{user && user.username}</Typography>
+          <IconButton
+            color="inherit"
+            aria-label={t('label.logout')}
+            component={Link}
+            to="/logout/"
+          >
+            {user && user.id && <ExitToApp />}
+          </IconButton>
         </TopBar>
 
         <Conditional cond={user.id}>
@@ -47,7 +57,7 @@ const App = ({ user: userObj }) => {
         </Conditional>
 
         <Content toolbar>
-          <Routes user={user} onLogin={setUser} />
+          <Routes user={user} onLogin={setUser} onLogout={setUser} />
         </Content>
       </Box>
     </BrowserRouter>

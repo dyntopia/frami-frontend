@@ -3,10 +3,11 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import { Ipsum } from './Ipsum';
 import { Login } from './Login';
+import { Logout } from './Logout';
 import { View as PatientView } from './patient';
 import { View as StaffView } from './staff';
 
-const Routes = ({ user, onLogin }) => {
+const Routes = ({ user, onLogin, onLogout }) => {
   return (
     <>
       <Switch>
@@ -26,6 +27,13 @@ const Routes = ({ user, onLogin }) => {
             user.id ?
               <Redirect to="/" /> :
               <Login {...props} onSuccess={onLogin} />
+          )}
+        />
+        <Route
+          exact
+          path="/logout/"
+          render={(props) => (
+            <Logout {...props} onSuccess={onLogout} />
           )}
         />
         <Route

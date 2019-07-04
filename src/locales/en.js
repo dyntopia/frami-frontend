@@ -8,6 +8,7 @@ const en = {
       home: 'Home',
       last_name: 'Last name',
       login: 'Login',
+      logout: 'Logout',
       medication: 'Medication',
       name: 'Name',
       note: 'Note',
@@ -29,6 +30,7 @@ const en = {
     },
     message: {
       apiError: 'Could not retrieve data',
+      bye: 'Bye!',
       invalidCredentials: 'Invalid credentials',
     },
   },
