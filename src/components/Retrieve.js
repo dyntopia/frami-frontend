@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { APIContext } from '../context';
 import { Message } from './Message';
 import { Progress } from './Progress';
+import { filterObj } from '../utils';
 
 const log = debug('app:Retrieve:log');
 const error = debug('app:Retrieve:error');
@@ -44,7 +45,7 @@ const Retrieve = ({ method, url, data, children }) => {
     );
   }
 
-  retrieve(api, method, url, data, setSuccess, setFailure);
+  retrieve(api, method, url, filterObj(data), setSuccess, setFailure);
   return <Progress />;
 };
 
