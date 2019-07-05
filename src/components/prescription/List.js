@@ -27,8 +27,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Cell = ({ uid, pid, page, children }) => {
+const Cell = ({ uid, pid, page, children, user: { is_staff: isStaff } }) => {
   const classes = useStyles();
+
+  if (!isStaff) {
+    return (
+      <TableCell>
+        {children}
+      </TableCell>
+    );
+  }
   return (
     <TableCell>
       <Link className={classes.link} to={`/${page}/${uid}/prescription/${pid}`}>
@@ -39,16 +47,16 @@ const Cell = ({ uid, pid, page, children }) => {
 };
 
 const Row = (props) => {
-  const { data, username, page, match: { params: { uid } } } = props;
+  const { data, username, match: { params: { uid } } } = props;
   const { id, medication, note, prescriber, quantity } = data;
 
   return (
     <TableRow hover>
-      <Cell uid={uid} pid={id} page={page}>{username}</Cell>
-      <Cell uid={uid} pid={id} page={page}>{medication}</Cell>
-      <Cell uid={uid} pid={id} page={page}>{quantity}</Cell>
-      <Cell uid={uid} pid={id} page={page}>{prescriber}</Cell>
-      <Cell uid={uid} pid={id} page={page}>{note && <ModeComment />}</Cell>
+      <Cell {...props} uid={uid} pid={id}>{username}</Cell>
+      <Cell {...props} uid={uid} pid={id}>{medication}</Cell>
+      <Cell {...props} uid={uid} pid={id}>{quantity}</Cell>
+      <Cell {...props} uid={uid} pid={id}>{prescriber}</Cell>
+      <Cell {...props} uid={uid} pid={id}>{note && <ModeComment />}</Cell>
     </TableRow>
   );
 };

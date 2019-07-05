@@ -6,6 +6,7 @@ import { Login } from './Login';
 import { Logout } from './Logout';
 import { View as PatientView } from './patient';
 import { View as StaffView } from './staff';
+import { View as PrescriptionView } from './prescription';
 
 const Routes = ({ user, onLogin, onLogout }) => {
   return (
@@ -34,6 +35,13 @@ const Routes = ({ user, onLogin, onLogout }) => {
           path="/logout/"
           render={(props) => (
             <Logout {...props} onSuccess={onLogout} />
+          )}
+        />
+        <Route
+          exact
+          path="/prescription/:uid(\d+)/"
+          render={(props) => (
+            <PrescriptionView {...props} user={user} page="prescription" />
           )}
         />
         <Route

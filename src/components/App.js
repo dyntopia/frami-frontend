@@ -52,6 +52,18 @@ const App = ({ user: userObj }) => {
                   <ListItemText primary={t('label.staff', { count: 2 })} />
                 </ListItem>
               </Conditional>
+
+              <Conditional cond={!user.is_staff}>
+                <ListItem
+                  button
+                  component={Link}
+                  to={`/prescription/${user.id}/`}
+                >
+                  <ListItemText
+                    primary={t('label.prescription', { count: 2 })}
+                  />
+                </ListItem>
+              </Conditional>
             </List>
           </Navigation>
         </Conditional>
