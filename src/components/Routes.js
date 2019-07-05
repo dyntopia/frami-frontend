@@ -39,32 +39,44 @@ const Routes = ({ user, onLogin, onLogout }) => {
         <Route
           exact
           path="/patient/:uid(\d+)?/"
-          render={(props) => <PatientView {...props} page="patient" />}
+          render={(props) => (
+            <PatientView {...props} user={user} page="patient" />
+          )}
         />
         <Route
           exact
           path="/patient/:uid(\d+)/:menu?/:mid(\d+)?"
-          render={(props) => <PatientView {...props} page="patient" />}
+          render={(props) => (
+            <PatientView {...props} user={user} page="patient" />
+          )}
         />
         <Route
           exact
           path="/patient/:uid(\d+)/:menu?/:add/"
-          render={(props) => <PatientView {...props} page="patient" />}
+          render={(props) => (
+            <PatientView {...props} user={user} page="patient" />
+          )}
         />
         <Route
           exact
           path="/patient/:add/"
-          render={(props) => <PatientView {...props} page="patient" />}
+          render={(props) => (
+            <PatientView {...props} user={user} page="patient" />
+          )}
         />
         <Route
           exact
           path="/staff/:uid(\d+)?/"
-          render={(props) => <StaffView {...props} page="staff" />}
+          render={(props) => (
+            <StaffView {...props} user={user} page="staff" />
+          )}
         />
         <Route
           exact
           path="/staff/:add/"
-          render={(props) => <StaffView {...props} page="staff" />}
+          render={(props) => (
+            <StaffView {...props} user={user} page="staff" />
+          )}
         />
       </Switch>
     </>
