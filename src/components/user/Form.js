@@ -19,6 +19,7 @@ const DataForm = ({ uid, data, to }) => {
       <Field name="email" />
       <Field name="first_name" />
       <Field name="last_name" />
+      <Field name="password" type="password" />
       <Conditional cond={done}>
         <Redirect to={to} />
       </Conditional>
