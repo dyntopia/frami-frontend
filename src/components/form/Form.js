@@ -12,7 +12,7 @@ import { Retrieve } from '../Retrieve';
 const Form = ({ children, data, deleteUrl, saveUrl, onDone }) => {
   const [remove, setRemove] = useState(false);
   const [submit, setSubmit] = useState(false);
-  const [values, setValues] = useState(data);
+  const [values, setValues] = useState(data || {});
   const { t } = useTranslation();
 
   const handleChange = ({ target: { name, value } }) => {

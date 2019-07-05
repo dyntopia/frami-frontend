@@ -64,6 +64,10 @@ const App = ({ user: userObj }) => {
                   />
                 </ListItem>
               </Conditional>
+
+              <ListItem button component={Link} to="/question/">
+                <ListItemText primary={t('label.question', { count: 2 })} />
+              </ListItem>
             </List>
           </Navigation>
         </Conditional>

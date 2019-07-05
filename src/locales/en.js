@@ -2,6 +2,7 @@
 const en = {
   translation: {
     label: {
+      answer: 'Answer',
       done: 'Done',
       email: 'Email',
       first_name: 'First name',
@@ -10,6 +11,7 @@ const en = {
       login: 'Login',
       logout: 'Logout',
       medication: 'Medication',
+      message: 'Message',
       name: 'Name',
       note: 'Note',
       password: 'Password',
@@ -20,10 +22,13 @@ const en = {
       prescription_plural: 'Prescriptions',
       profile: 'Profile',
       quantity: 'Quantity',
+      question: 'Question',
+      question_plural: 'Questions',
       remove: 'Remove',
       role: 'Role',
       save: 'Save',
       staff: 'Staff',
+      subject: 'Subject',
       unknown: 'Unknown',
       username: 'Username',
       users: 'Users',

@@ -5,8 +5,9 @@ import { Ipsum } from './Ipsum';
 import { Login } from './Login';
 import { Logout } from './Logout';
 import { View as PatientView } from './patient';
-import { View as StaffView } from './staff';
 import { View as PrescriptionView } from './prescription';
+import { View as QuestionView } from './question';
+import { View as StaffView } from './staff';
 
 const Routes = ({ user, onLogin, onLogout }) => {
   return (
@@ -42,6 +43,13 @@ const Routes = ({ user, onLogin, onLogout }) => {
           path="/prescription/:uid(\d+)/"
           render={(props) => (
             <PrescriptionView {...props} user={user} page="prescription" />
+          )}
+        />
+        <Route
+          exact
+          path="/question/:qid(\d+)?/:action?/"
+          render={(props) => (
+            <QuestionView {...props} user={user} page="question" />
           )}
         />
         <Route
