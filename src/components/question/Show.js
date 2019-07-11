@@ -12,6 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Conditional } from '../Conditional';
 import { Retrieve } from '../Retrieve';
+import { isStaff } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
   add: {
@@ -65,7 +66,7 @@ const Show = (props) => {
         <DataList {...props} />
       </Retrieve>
 
-      <Conditional cond={user.is_staff}>
+      <Conditional cond={isStaff(user)}>
         <Fab
           color="primary"
           aria-label="Add user"

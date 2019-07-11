@@ -27,11 +27,7 @@ const DataForm = ({ uid, data, to }) => {
   );
 };
 
-const Form = ({ uid, isStaff, ...props }) => {
-  /* eslint-disable camelcase */
-  const data = { is_staff: isStaff };
-  /* eslint-enable camelcase */
-
+const Form = ({ uid, groups, ...props }) => {
   return (
     <>
       <Conditional cond={uid}>
@@ -41,7 +37,7 @@ const Form = ({ uid, isStaff, ...props }) => {
       </Conditional>
 
       <Conditional cond={!uid}>
-        <DataForm id={uid} data={data} {...props} />
+        <DataForm id={uid} data={{ groups }} {...props} />
       </Conditional>
     </>
   );

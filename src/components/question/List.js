@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Conditional } from '../Conditional';
 import { Retrieve } from '../Retrieve';
+import { isPatient } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
   add: {
@@ -61,7 +62,7 @@ const List = (props) => {
         </Retrieve>
       </MList>
 
-      <Conditional cond={!user.is_staff}>
+      <Conditional cond={isPatient(user)}>
         <Fab
           color="primary"
           aria-label="Add user"

@@ -2,6 +2,7 @@
 const en = {
   translation: {
     label: {
+      admin: 'Admin',
       answer: 'Answer',
       done: 'Done',
       email: 'Email',

@@ -16,6 +16,7 @@ import { TopBar } from './TopBar';
 import { Conditional } from './Conditional';
 import { Routes } from './Routes';
 import { Content } from './Content';
+import { isPatient, isStaff } from '../utils';
 
 const App = ({ user: userObj }) => {
   const [user, setUser] = useState(userObj);
@@ -44,7 +45,7 @@ const App = ({ user: userObj }) => {
                 <ListItemText primary={t('label.home')} />
               </ListItem>
 
-              <Conditional cond={user.is_staff}>
+              <Conditional cond={isStaff(user)}>
                 <ListItem button component={Link} to="/patient/">
                   <ListItemText primary={t('label.patient', { count: 2 })} />
                 </ListItem>
@@ -53,7 +54,7 @@ const App = ({ user: userObj }) => {
                 </ListItem>
               </Conditional>
 
-              <Conditional cond={!user.is_staff}>
+              <Conditional cond={isPatient(user)}>
                 <ListItem
                   button
                   component={Link}

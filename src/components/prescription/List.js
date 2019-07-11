@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
 import { Retrieve } from '../Retrieve';
+import { isStaff } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
   add: {
@@ -27,10 +28,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Cell = ({ uid, pid, page, children, user: { is_staff: isStaff } }) => {
+const Cell = ({ uid, pid, page, children, user }) => {
   const classes = useStyles();
 
-  if (!isStaff) {
+  if (!isStaff(user)) {
     return (
       <TableCell>
         {children}

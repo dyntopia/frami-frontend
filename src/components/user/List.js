@@ -7,12 +7,14 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import _ from 'lodash/fp';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
 import { Conditional } from '../Conditional';
 import { Retrieve } from '../Retrieve';
+import { isPatient, isStaff } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
   add: {
@@ -40,13 +42,14 @@ const Cell = ({ uid, page, children }) => {
 
 const Row = ({ data, page }) => {
   const { t } = useTranslation();
-  const role = data.is_staff ? t('label.staff') : t('label.patient');
+  const group = _.head(data.groups) || 'unknown';
+  const role = t(`label.${group}`);
   const name = (data.first_name || data.last_name) ?
     `${data.first_name} ${data.last_name}` :
     t('label.unknown');
 
   return (
-    <Conditional cond={page === 'staff' ? data.is_staff : !data.is_staff}>
+    <Conditional cond={page === 'staff' ? isStaff(data) : isPatient(data)}>
       <TableRow hover>
         <Cell uid={data.id} page={page}>{name}</Cell>
         <Cell uid={data.id} page={page}>{data.username}</Cell>
