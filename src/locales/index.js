@@ -1,7 +1,12 @@
 import { en } from './en';
+import { enMedication } from './enMedication';
 
 const locales = {
   en,
 };
 
-export { locales };
+const medication = {
+  en: enMedication,
+};
+
+export { locales, medication };

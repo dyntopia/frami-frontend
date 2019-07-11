@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { Field, Form as MForm } from '../form';
 import { Conditional } from '../Conditional';
 import { Retrieve } from '../Retrieve';
+import { medication } from '../../locales';
 
 const DataForm = ({ uid, pid, data, to }) => {
   const [done, setDone] = useState(false);
+  const { i18n } = useTranslation();
+  const meds = medication[i18n.language] || medication.en;
 
   return (
     <MForm
@@ -15,7 +19,10 @@ const DataForm = ({ uid, pid, data, to }) => {
       data={data || { user: uid }}
       onDone={() => setDone(true)}
     >
-      <Field name="medication" />
+      <Field inputProps={{ list: 'medication' }} name="medication" />
+      <datalist id="medication">
+        {meds.map((elt) => <option key={elt} value={elt} />)}
+      </datalist>
       <Field name="quantity" />
       <Field name="note" />
       <Conditional cond={done}>
