@@ -6,6 +6,7 @@ import { Login } from './Login';
 import { Logout } from './Logout';
 import { View as PatientView } from './patient';
 import { View as PrescriptionView } from './prescription';
+import { View as ResultView } from './result';
 import { View as QuestionView } from './question';
 import { View as StaffView } from './staff';
 
@@ -45,6 +46,14 @@ const Routes = ({ user, onLogin, onLogout }) => {
             <PrescriptionView {...props} user={user} page="prescription" />
           )}
         />
+        <Route
+          exact
+          path="/result/:rid(\d+)?/"
+          render={(props) => (
+            <ResultView {...props} user={user} page="result" />
+          )}
+        />
+
         <Route
           exact
           path="/question/:qid(\d+)?/:action?/"
