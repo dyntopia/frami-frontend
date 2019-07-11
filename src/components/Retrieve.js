@@ -23,12 +23,12 @@ const retrieve = async (api, method, url, data, onSuccess, onFailure) => {
 };
 
 const Retrieve = ({ method, url, data, children }) => {
-  const [success, setSuccess] = useState([]);
+  const [success, setSuccess] = useState(null);
   const [failure, setFailure] = useState(false);
   const { t } = useTranslation();
   const api = useContext(APIContext);
 
-  if (success.length || failure) {
+  if (success || failure) {
     /* istanbul ignore next */
     return (
       <>
