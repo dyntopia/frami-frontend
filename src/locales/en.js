@@ -26,6 +26,8 @@ const en = {
       quantity: 'Quantity',
       question: 'Question',
       question_plural: 'Questions',
+      refill: 'Refill',
+      refill_plural: 'Refills',
       remove: 'Remove',
       result: 'Result',
       role: 'Role',

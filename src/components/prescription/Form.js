@@ -24,6 +24,7 @@ const DataForm = ({ uid, pid, data, to }) => {
         {meds.map((elt) => <option key={elt} value={elt} />)}
       </datalist>
       <Field name="quantity" />
+      <Field name="refill" type="number" />
       <Field name="note" />
       <Conditional cond={done}>
         <Redirect to={to} />

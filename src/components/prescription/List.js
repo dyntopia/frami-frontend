@@ -49,7 +49,7 @@ const Cell = ({ uid, pid, page, children, user }) => {
 
 const Row = (props) => {
   const { data, username, match: { params: { uid } } } = props;
-  const { id, medication, note, prescriber, quantity } = data;
+  const { id, medication, note, prescriber, quantity, refill } = data;
 
   return (
     <TableRow hover>
@@ -57,6 +57,7 @@ const Row = (props) => {
       <Cell {...props} uid={uid} pid={id}>{medication}</Cell>
       <Cell {...props} uid={uid} pid={id}>{quantity}</Cell>
       <Cell {...props} uid={uid} pid={id}>{prescriber}</Cell>
+      <Cell {...props} uid={uid} pid={id}>{refill}</Cell>
       <Cell {...props} uid={uid} pid={id}>{note && <ModeComment />}</Cell>
     </TableRow>
   );
@@ -85,6 +86,7 @@ const List = (props) => {
               <TableCell>{t('label.medication')}</TableCell>
               <TableCell>{t('label.quantity')}</TableCell>
               <TableCell>{t('label.prescriber')}</TableCell>
+              <TableCell>{t('label.refill', { count: 2 })}</TableCell>
               <TableCell>{t('label.note')}</TableCell>
             </TableRow>
           </TableHead>
