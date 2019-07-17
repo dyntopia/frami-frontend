@@ -23,19 +23,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Item = ({ data }) => {
-  const { user, subject, message } = data;
+  const { creator, subject, message } = data;
 
   return (
     <ListItem>
       <ListItemAvatar>
-        <Avatar>{user[0]}</Avatar>
+        <Avatar>{creator[0]}</Avatar>
       </ListItemAvatar>
       <ListItemText
         primary={subject || 'Answer'}
         secondary={
           <>
             <Typography component="span" color="textPrimary">
-              {user}
+              {creator}
             </Typography>
             {` - ${message}`}
           </>
@@ -62,7 +62,7 @@ const Show = (props) => {
 
   return (
     <>
-      <Retrieve url={`/api/question/${qid}`}>
+      <Retrieve url={`/api/question/${qid}/`}>
         <DataList {...props} />
       </Retrieve>
 

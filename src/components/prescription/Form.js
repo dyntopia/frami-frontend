@@ -16,7 +16,7 @@ const DataForm = ({ uid, pid, data, to }) => {
     <MForm
       deleteUrl={pid && `/api/prescription/${pid}/`}
       saveUrl={pid ? `/api/prescription/${pid}/` : '/api/prescription/'}
-      data={data || { user: uid }}
+      data={data || { patient: uid }}
       onDone={() => setDone(true)}
     >
       <Field inputProps={{ list: 'medication' }} name="medication" />

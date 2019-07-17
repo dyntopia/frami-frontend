@@ -38,7 +38,7 @@ const Answer = ({ answers, ...props }) => {
 
 const Item = ({ data, page }) => {
   const { subject, answers, id } = data;
-  const to = `/${page}/${id}`;
+  const to = `/${page}/${id}/`;
 
   return (
     <ListItem dense button component={Link} to={to}>
