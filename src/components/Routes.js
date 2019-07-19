@@ -4,6 +4,8 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { Ipsum } from './Ipsum';
 import { Login } from './Login';
 import { Logout } from './Logout';
+import { View as AppointmentView } from './appointment';
+import { View as AppointmentRequestView } from './appointment-request';
 import { View as PatientView } from './patient';
 import { View as PrescriptionView } from './prescription';
 import { View as ResultView } from './result';
@@ -37,6 +39,24 @@ const Routes = ({ user, onLogin, onLogout }) => {
           path="/logout/"
           render={(props) => (
             <Logout {...props} onSuccess={onLogout} />
+          )}
+        />
+        <Route
+          exact
+          path="/appointment/:aid(\d+)?/:action?/"
+          render={(props) => (
+            <AppointmentView {...props} user={user} page="appointment" />
+          )}
+        />
+        <Route
+          exact
+          path="/appointment-request/:aid(\d+)?/:action?/"
+          render={(props) => (
+            <AppointmentRequestView
+              {...props}
+              user={user}
+              page="appointment-request"
+            />
           )}
         />
         <Route
