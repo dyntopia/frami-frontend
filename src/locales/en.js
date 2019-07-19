@@ -35,6 +35,7 @@ const en = {
       question_plural: 'Questions',
       refill: 'Refill',
       refill_plural: 'Refills',
+      refill_requested: 'Refill requested',
       remove: 'Remove',
       request_refill: 'Request refill',
       requested: 'Requested',
