@@ -57,7 +57,7 @@ const List = () => {
   const data = _.unionBy('uuid', userState.data, groupState.data);
   return (
     <MList>
-      {(data || []).map((elt) => <Item key={elt.uuid} data={elt} />)}
+      {data.map((elt) => <Item key={elt.uuid} data={elt} />)}
     </MList>
   );
 };
