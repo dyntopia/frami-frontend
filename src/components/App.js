@@ -85,6 +85,12 @@ const App = ({ user: userObj }) => {
                   primary={t('label.appointment_request', { count: 2 })}
                 />
               </ListItem>
+
+              <ListItem button component={Link} to="/notification/">
+                <ListItemText
+                  primary={t('label.notification', { count: 2 })}
+                />
+              </ListItem>
             </List>
           </Navigation>
         </Conditional>

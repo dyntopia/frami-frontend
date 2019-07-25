@@ -23,6 +23,8 @@ const en = {
       message: 'Message',
       name: 'Name',
       note: 'Note',
+      notification: 'Notification',
+      notification_plural: 'Notifications',
       password: 'Password',
       patient: 'Patient',
       patient_plural: 'Patients',
@@ -56,6 +58,24 @@ const en = {
       apiError: 'Could not retrieve data',
       bye: 'Bye!',
       invalidCredentials: 'Invalid credentials',
+      answer_created_subject: 'Answer',
+      answer_created_message: '{{creator}} answered your question',
+      appointment_created_subject: 'Appointment',
+      appointment_created_message: '{{creator}} booked appointment ' +
+                                   'for {{staff}} and {{patient}} ' +
+                                   'at {{start_date}}',
+      appointmentrequest_created_subject: 'Appointment request',
+      appointmentrequest_created_message: '{{creator}} has requested ' +
+                                          'an appointment with ' +
+                                          '{{staff}} on {{start_date}}',
+      prescription_created_subject: 'New prescription',
+      prescription_created_message: 'Added prescription for {{medication}}',
+      prescriptionrequest_created_subject: 'Refill request',
+      prescriptionrequest_created_message: '{{creator}} asked for refill',
+      question_created_subject: 'Question',
+      question_created_message: '{{creator}} sent a question',
+      result_created_subject: 'Test result',
+      result_created_message: '{{creator}} added a test result',
     },
   },
 };
