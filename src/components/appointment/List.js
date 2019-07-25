@@ -29,16 +29,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Cell = ({ pid, page, children, user }) => {
+const Cell = ({ pid, page, children }) => {
   const classes = useStyles();
 
-  if (!isStaff(user)) {
-    return (
-      <TableCell>
-        {children}
-      </TableCell>
-    );
-  }
   return (
     <TableCell>
       <Link className={classes.link} to={`/${page}/${pid}/`}>

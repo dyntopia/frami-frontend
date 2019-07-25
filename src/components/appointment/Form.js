@@ -5,9 +5,11 @@ import { format } from 'date-fns';
 import { Field, Form as MForm } from '../form';
 import { Conditional } from '../Conditional';
 import { Retrieve } from '../Retrieve';
+import { isStaff } from '../../utils';
 
 const DataForm = ({ aid, data, to, user }) => {
   const [done, setDone] = useState(false);
+  const disabled = !isStaff(user);
 
   /* eslint-disable camelcase */
   return (
@@ -26,11 +28,11 @@ const DataForm = ({ aid, data, to, user }) => {
       }}
       onDone={() => setDone(true)}
     >
-      <Field name="start_date" type="datetime-local" />
-      <Field name="end_date" type="datetime-local" />
-      <Field name="staff" />
-      <Field name="patient" />
-      <Field name="note" />
+      <Field name="start_date" type="datetime-local" disabled={disabled} />
+      <Field name="end_date" type="datetime-local" disabled={disabled} />
+      <Field name="staff" disabled={disabled} />
+      <Field name="patient" disabled={disabled} />
+      <Field name="note" disabled={disabled} />
       <Conditional cond={done}>
         <Redirect to={to} />
       </Conditional>
