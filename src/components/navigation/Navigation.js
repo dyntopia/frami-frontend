@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
 import Drawer from '@material-ui/core/Drawer';
-import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import MenuIcon from '@material-ui/icons/Menu';
+import React, { useState } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -47,7 +48,9 @@ const Navigation = ({ children }) => {
           }}
           onClose={() => setOpen(!open)}
         >
-          {children}
+          <List>
+            {children}
+          </List>
         </Drawer>
       </nav>
 

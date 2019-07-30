@@ -2,7 +2,7 @@ import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import { mount } from 'enzyme';
 
-import { Navigation } from '../../src/components/Navigation';
+import { Navigation } from '../../src/components/navigation';
 
 describe('Navigation', () => {
   test('small screen', () => {

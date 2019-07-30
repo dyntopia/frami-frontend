@@ -2,16 +2,13 @@ import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import ExitToApp from '@material-ui/icons/ExitToApp';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import '../i18n';
-import { Navigation } from './Navigation';
+import { Navigation, NavigationItem } from './navigation';
 import { TopBar } from './TopBar';
 import { Conditional } from './Conditional';
 import { Routes } from './Routes';
@@ -40,58 +37,30 @@ const App = ({ user: userObj }) => {
 
         <Conditional cond={user.id}>
           <Navigation>
-            <List>
-              <ListItem button component={Link} to="/">
-                <ListItemText primary={t('label.home')} />
-              </ListItem>
+            <NavigationItem to="/" label="home" />
 
-              <Conditional cond={isStaff(user)}>
-                <ListItem button component={Link} to="/patient/">
-                  <ListItemText primary={t('label.patient', { count: 2 })} />
-                </ListItem>
-                <ListItem button component={Link} to="/staff/">
-                  <ListItemText primary={t('label.staff', { count: 2 })} />
-                </ListItem>
-              </Conditional>
+            <Conditional cond={isStaff(user)}>
+              <NavigationItem to="/patient/" label="patient" plural />
+              <NavigationItem to="/staff/" label="staff" plural />
+            </Conditional>
 
-              <Conditional cond={isPatient(user)}>
-                <ListItem
-                  button
-                  component={Link}
-                  to={`/prescription/${user.id}/`}
-                >
-                  <ListItemText
-                    primary={t('label.prescription', { count: 2 })}
-                  />
-                </ListItem>
+            <Conditional cond={isPatient(user)}>
+              <NavigationItem
+                to={`/prescription/${user.id}/`}
+                label="prescription"
+                plural
+              />
+              <NavigationItem to="/result/" label="test_result" plural />
+            </Conditional>
 
-                <ListItem button component={Link} to="/result/">
-                  <ListItemText
-                    primary={t('label.test_result', { count: 2 })}
-                  />
-                </ListItem>
-              </Conditional>
-
-              <ListItem button component={Link} to="/question/">
-                <ListItemText primary={t('label.question', { count: 2 })} />
-              </ListItem>
-
-              <ListItem button component={Link} to="/appointment/">
-                <ListItemText primary={t('label.appointment', { count: 2 })} />
-              </ListItem>
-
-              <ListItem button component={Link} to="/appointment-request/">
-                <ListItemText
-                  primary={t('label.appointment_request', { count: 2 })}
-                />
-              </ListItem>
-
-              <ListItem button component={Link} to="/notification/">
-                <ListItemText
-                  primary={t('label.notification', { count: 2 })}
-                />
-              </ListItem>
-            </List>
+            <NavigationItem to="/question/" label="question" plural />
+            <NavigationItem to="/appointment/" label="appointment" plural />
+            <NavigationItem
+              to="/appointment-request/"
+              label="appointment_request"
+              plural
+            />
+            <NavigationItem to="/notification/" label="notification" plural />
           </Navigation>
         </Conditional>
 
