@@ -4,14 +4,14 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { Ipsum } from '../Ipsum';
 import { Login } from '../Login';
 import { Logout } from '../Logout';
-import { View as AppointmentRequestView } from '../appointment-request';
-import { View as AppointmentView } from '../appointment';
-import { View as NotificationView } from '../notification';
-import { View as PatientView } from '../patient';
-import { View as PrescriptionView } from '../prescription';
-import { View as QuestionView } from '../question';
-import { View as ResultView } from '../result';
-import { View as StaffView } from '../staff';
+import { View as AppointmentRequestView } from './appointment-request';
+import { View as AppointmentView } from './appointment';
+import { View as NotificationView } from './notification';
+import { View as PatientView } from './patient';
+import { View as PrescriptionView } from './prescription';
+import { View as QuestionView } from './question';
+import { View as ResultView } from './result';
+import { View as StaffView } from './staff';
 
 const Routes = ({ user, onLogin, onLogout }) => {
   return (
