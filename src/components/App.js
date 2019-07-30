@@ -8,15 +8,34 @@ import { BrowserRouter, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import '../i18n';
-import { Navigation, NavigationItem } from './navigation';
 import { TopBar } from './TopBar';
-import { Conditional } from './Conditional';
-import { Routes } from './Routes';
 import { Content } from './Content';
 import { isPatient, isStaff } from '../utils';
+import {
+  Navigation as StaffNavigation,
+  Routes as StaffRoutes,
+} from './staff-view';
+import {
+  Navigation as PatientNavigation,
+  Routes as PatientRoutes,
+} from './patient-view';
+import {
+  Navigation as AnonymousNavigation,
+  Routes as AnonymousRoutes,
+} from './anonymous-view';
+
+const getComponents = (user) => {
+  if (isStaff(user)) {
+    return [StaffNavigation, StaffRoutes];
+  } else if (isPatient(user)) {
+    return [PatientNavigation, PatientRoutes];
+  }
+  return [AnonymousNavigation, AnonymousRoutes];
+};
 
 const App = ({ user: userObj }) => {
   const [user, setUser] = useState(userObj);
+  const [Navigation, Routes] = getComponents(user);
   const { t } = useTranslation();
 
   return (
@@ -35,34 +54,7 @@ const App = ({ user: userObj }) => {
           </IconButton>
         </TopBar>
 
-        <Conditional cond={user.id}>
-          <Navigation>
-            <NavigationItem to="/" label="home" />
-
-            <Conditional cond={isStaff(user)}>
-              <NavigationItem to="/patient/" label="patient" plural />
-              <NavigationItem to="/staff/" label="staff" plural />
-            </Conditional>
-
-            <Conditional cond={isPatient(user)}>
-              <NavigationItem
-                to={`/prescription/${user.id}/`}
-                label="prescription"
-                plural
-              />
-              <NavigationItem to="/result/" label="test_result" plural />
-            </Conditional>
-
-            <NavigationItem to="/question/" label="question" plural />
-            <NavigationItem to="/appointment/" label="appointment" plural />
-            <NavigationItem
-              to="/appointment-request/"
-              label="appointment_request"
-              plural
-            />
-            <NavigationItem to="/notification/" label="notification" plural />
-          </Navigation>
-        </Conditional>
+        <Navigation user={user} />
 
         <Content toolbar>
           <Routes user={user} onLogin={setUser} onLogout={setUser} />
