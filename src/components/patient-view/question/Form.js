@@ -5,19 +5,18 @@ import { Conditional } from '../../Conditional';
 import { Field, Form as MForm } from '../../form';
 
 const Form = (props) => {
-  const { qid, page } = props;
+  const { pageUrl, apiUrl } = props;
   const [done, setDone] = useState(false);
 
   return (
     <MForm
-      saveUrl={qid ? '/api/answer/' : '/api/question/'}
-      data={qid ? { question: qid } : {}}
+      saveUrl={apiUrl}
       onDone={() => setDone(true)}
     >
       <Field name="subject" />
       <Field name="message" multiline rows="10" />
       <Conditional cond={done}>
-        <Redirect to={`/${page}/`} />
+        <Redirect to={pageUrl} />
       </Conditional>
     </MForm>
   );

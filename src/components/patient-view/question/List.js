@@ -11,9 +11,7 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
-import { Conditional } from '../../Conditional';
 import { Retrieve } from '../../Retrieve';
-import { isPatient } from '../../../utils';
 
 const useStyles = makeStyles((theme) => ({
   add: {
@@ -36,9 +34,9 @@ const Answer = ({ answers, ...props }) => {
   return null;
 };
 
-const Item = ({ data, page }) => {
+const Item = ({ data, pageUrl }) => {
   const { subject, answers, id } = data;
-  const to = `/${page}/${id}/`;
+  const to = `${pageUrl}${id}/`;
 
   return (
     <ListItem dense button component={Link} to={to}>
@@ -51,28 +49,26 @@ const Item = ({ data, page }) => {
 };
 
 const List = (props) => {
-  const { user, page } = props;
+  const { pageUrl, apiUrl } = props;
   const classes = useStyles();
 
   return (
     <>
       <MList>
-        <Retrieve url="/api/question/" method="GET">
+        <Retrieve url={apiUrl} method="GET">
           <Item {...props} />
         </Retrieve>
       </MList>
 
-      <Conditional cond={isPatient(user)}>
-        <Fab
-          color="primary"
-          aria-label="Add user"
-          className={classes.add}
-          component={Link}
-          to={`/${page}/add/`}
-        >
-          <Add />
-        </Fab>
-      </Conditional>
+      <Fab
+        color="primary"
+        aria-label="Add user"
+        className={classes.add}
+        component={Link}
+        to={`${pageUrl}add/`}
+      >
+        <Add />
+      </Fab>
     </>
   );
 };
