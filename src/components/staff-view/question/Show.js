@@ -10,9 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Conditional } from '../../Conditional';
 import { Retrieve } from '../../Retrieve';
-import { isStaff } from '../../../utils';
 
 const useStyles = makeStyles((theme) => ({
   add: {
@@ -57,26 +55,24 @@ const DataList = ({ data }) => {
 };
 
 const Show = (props) => {
-  const { user, qid, page } = props;
+  const { qid, apiUrl, pageUrl } = props;
   const classes = useStyles();
 
   return (
     <>
-      <Retrieve url={`/api/question/${qid}/`}>
+      <Retrieve url={`${apiUrl}${qid}`}>
         <DataList {...props} />
       </Retrieve>
 
-      <Conditional cond={isStaff(user)}>
-        <Fab
-          color="primary"
-          aria-label="Add user"
-          className={classes.add}
-          component={Link}
-          to={`/${page}/${qid}/answer/`}
-        >
-          <Add />
-        </Fab>
-      </Conditional>
+      <Fab
+        color="primary"
+        aria-label="Add user"
+        className={classes.add}
+        component={Link}
+        to={`${pageUrl}${qid}/answer/`}
+      >
+        <Add />
+      </Fab>
     </>
   );
 };

@@ -4,6 +4,7 @@ import { Menu } from './Menu';
 import { Form } from './Form';
 import { List } from './List';
 import { View as PrescriptionView } from '../prescription';
+import { View as QuestionView } from '../question';
 import { View as ResultView } from '../result';
 
 const View = (props) => {
@@ -14,6 +15,7 @@ const View = (props) => {
       [`/${page}/${uid}/profile/`, 'profile', Form],
       [`/${page}/${uid}/prescription/`, 'prescription', PrescriptionView],
       [`/${page}/${uid}/result/`, 'test_result', ResultView],
+      [`/${page}/${uid}/question/`, 'question', QuestionView],
     ];
     return <Menu {...props} uid={uid} menus={menus} />;
   }

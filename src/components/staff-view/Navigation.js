@@ -8,7 +8,6 @@ const Navigation = () => {
       <NavigationItem to="/" label="home" />
       <NavigationItem to="/patient/" label="patient" plural />
       <NavigationItem to="/staff/" label="staff" plural />
-      <NavigationItem to="/question/" label="question" plural />
       <NavigationItem to="/appointment/" label="appointment" plural />
       <NavigationItem
         to="/appointment-request/"
