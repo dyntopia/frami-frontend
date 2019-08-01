@@ -1,6 +1,4 @@
 import React from 'react';
-import Add from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
 import Grid from '@material-ui/core/Grid';
 import ModeComment from '@material-ui/icons/ModeCommentOutlined';
 import Table from '@material-ui/core/Table';
@@ -12,9 +10,7 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
-import { Conditional } from '../../Conditional';
 import { Retrieve } from '../../Retrieve';
-import { isStaff } from '../../../utils';
 
 const useStyles = makeStyles((theme) => ({
   add: {
@@ -65,44 +61,28 @@ const Row = (props) => {
 };
 
 const List = (props) => {
-  const { page, user } = props;
   const { t } = useTranslation();
-  const classes = useStyles();
 
   return (
-    <>
-      <Grid container justify="center">
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>{t('label.staff')}</TableCell>
-              <TableCell>{t('label.patient')}</TableCell>
-              <TableCell>{t('label.start_date')}</TableCell>
-              <TableCell>{t('label.end_date')}</TableCell>
-              <TableCell>{t('label.note')}</TableCell>
-              <TableCell>{t('label.status')}</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <Retrieve url="/api/appointment/" method="GET">
-              <Row {...props} status={t('label.scheduled')} />
-            </Retrieve>
-          </TableBody>
-        </Table>
-      </Grid>
-
-      <Conditional cond={isStaff(user)}>
-        <Fab
-          color="primary"
-          aria-label="Add appointment"
-          className={classes.add}
-          component={Link}
-          to={`/${page}/add/`}
-        >
-          <Add />
-        </Fab>
-      </Conditional>
-    </>
+    <Grid container justify="center">
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>{t('label.staff')}</TableCell>
+            <TableCell>{t('label.patient')}</TableCell>
+            <TableCell>{t('label.start_date')}</TableCell>
+            <TableCell>{t('label.end_date')}</TableCell>
+            <TableCell>{t('label.note')}</TableCell>
+            <TableCell>{t('label.status')}</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <Retrieve url="/api/appointment/" method="GET">
+            <Row {...props} status={t('label.scheduled')} />
+          </Retrieve>
+        </TableBody>
+      </Table>
+    </Grid>
   );
 };
 
