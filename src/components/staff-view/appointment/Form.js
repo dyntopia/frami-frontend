@@ -13,7 +13,6 @@ import { useRequest } from '../../../hooks';
 const DataForm = ({ aid, data, to, user }) => {
   const [done, setDone] = useState(false);
   const [state, request] = useRequest();
-  const disabled = !isStaff(user);
 
   if (!state.started) {
     request('get', '/api/user/');
@@ -36,32 +35,21 @@ const DataForm = ({ aid, data, to, user }) => {
       }}
       onDone={() => setDone(true)}
     >
-      <Field name="start_date" type="datetime-local" disabled={disabled} />
-      <Field name="end_date" type="datetime-local" disabled={disabled} />
-
-      <Field
-        inputProps={{ list: 'staff' }}
-        name="staff"
-        disabled={disabled}
-      />
+      <Field name="start_date" type="datetime-local" />
+      <Field name="end_date" type="datetime-local" />
+      <Field inputProps={{ list: 'staff' }} name="staff" />
       <datalist id="staff">
         {(state.data || []).filter(isStaff).map((elt) => (
           <option key={elt.id} value={elt.username} />
         ))}
       </datalist>
-
-      <Field
-        inputProps={{ list: 'patient' }}
-        name="patient"
-        disabled={disabled}
-      />
+      <Field inputProps={{ list: 'patient' }} name="patient" />
       <datalist id="patient">
         {(state.data || []).filter(isPatient).map((elt) => (
           <option key={elt.id} value={elt.username} />
         ))}
       </datalist>
-
-      <Field name="note" disabled={disabled} />
+      <Field name="note" />
       <Conditional cond={done}>
         <Redirect to={to} />
       </Conditional>

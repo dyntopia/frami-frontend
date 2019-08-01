@@ -12,9 +12,7 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
-import { Conditional } from '../../Conditional';
 import { Retrieve } from '../../Retrieve';
-import { isStaff } from '../../../utils';
 
 const useStyles = makeStyles((theme) => ({
   add: {
@@ -65,7 +63,7 @@ const Row = (props) => {
 };
 
 const List = (props) => {
-  const { page, user } = props;
+  const { page } = props;
   const { t } = useTranslation();
   const classes = useStyles();
 
@@ -91,17 +89,15 @@ const List = (props) => {
         </Table>
       </Grid>
 
-      <Conditional cond={isStaff(user)}>
-        <Fab
-          color="primary"
-          aria-label="Add appointment"
-          className={classes.add}
-          component={Link}
-          to={`/${page}/add/`}
-        >
-          <Add />
-        </Fab>
-      </Conditional>
+      <Fab
+        color="primary"
+        aria-label="Add appointment"
+        className={classes.add}
+        component={Link}
+        to={`/${page}/add/`}
+      >
+        <Add />
+      </Fab>
     </>
   );
 };
