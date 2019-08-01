@@ -33,7 +33,7 @@ const Retrieve = ({ method, url, data, children }) => {
     return (
       <>
         {success.map((elt) => (
-          React.cloneElement(children, { key: elt.id, data: elt })
+          children && React.cloneElement(children, { key: elt.id, data: elt })
         ))}
         <Message
           open={Boolean(failure)}
