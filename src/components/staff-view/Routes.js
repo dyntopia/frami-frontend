@@ -8,7 +8,6 @@ import { View as AppointmentRequestView } from './appointment-request';
 import { View as AppointmentView } from './appointment';
 import { View as NotificationView } from './notification';
 import { View as PatientView } from './patient';
-import { View as ResultView } from './result';
 import { View as StaffView } from './staff';
 
 const Routes = ({ user, onLogin, onLogout }) => {
@@ -58,14 +57,6 @@ const Routes = ({ user, onLogin, onLogout }) => {
             />
           )}
         />
-        <Route
-          exact
-          path="/result/:rid(\d+)?/"
-          render={(props) => (
-            <ResultView {...props} user={user} page="result" />
-          )}
-        />
-
         <Route
           exact
           path="/patient/:uid(\d+)?/"

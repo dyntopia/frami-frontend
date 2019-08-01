@@ -12,7 +12,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
 import { Retrieve } from '../../Retrieve';
-import { isStaff } from '../../../utils';
 
 const useStyles = makeStyles((theme) => ({
   add: {
@@ -27,16 +26,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Cell = ({ uid, pid, page, children, user }) => {
+const Cell = ({ uid, pid, page, children }) => {
   const classes = useStyles();
 
-  if (!isStaff(user)) {
-    return (
-      <TableCell>
-        {children}
-      </TableCell>
-    );
-  }
   return (
     <TableCell>
       <Link className={classes.link} to={`/${page}/${uid}/result/${pid}`}>
@@ -62,7 +54,6 @@ const List = (props) => {
   const { match: { params: { uid } }, page } = props;
   const { t } = useTranslation();
   const classes = useStyles();
-  const query = uid ? `?patient=${uid}` : '';
 
   return (
     <>
@@ -75,7 +66,7 @@ const List = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <Retrieve url={`/api/result/${query}`} method="GET">
+            <Retrieve url={`/api/result/?patient=${uid}`} method="GET">
               <Row {...props} />
             </Retrieve>
           </TableBody>
