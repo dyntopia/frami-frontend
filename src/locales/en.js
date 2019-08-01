@@ -14,6 +14,7 @@ const en = {
       email: 'Email',
       end_date: 'End date',
       first_name: 'First name',
+      forgot_password: 'Forgot password',
       home: 'Home',
       kind: 'Type',
       last_name: 'Last name',

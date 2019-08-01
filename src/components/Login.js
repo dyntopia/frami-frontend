@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import debug from 'debug';
 import qs from 'qs';
+import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
 import { APIContext } from '../context';
@@ -12,10 +13,17 @@ import { Message } from './Message';
 
 const error = debug('app:Login:error');
 
+const useStyles = makeStyles(() => ({
+  forgotButton: {
+    textTransform: 'none',
+  },
+}));
+
 const Login = ({ onSuccess }) => {
   const [message, setMessage] = useState(false);
   const [values, setValues] = useState({ username: '', password: '' });
   const { t } = useTranslation();
+  const classes = useStyles();
   const api = useContext(APIContext);
 
   const handleChange = ({ target: { name, value } }) => {
@@ -64,6 +72,13 @@ const Login = ({ onSuccess }) => {
               type="submit"
             >
               {t('label.login')}
+            </Button>
+            <Button
+              className={classes.forgotButton}
+              color="primary"
+              href="/reset/request/"
+            >
+              {t('label.forgot_password')}
             </Button>
           </FormControl>
         </form>
