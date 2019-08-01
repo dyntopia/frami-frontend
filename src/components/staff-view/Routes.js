@@ -8,7 +8,6 @@ import { View as AppointmentRequestView } from './appointment-request';
 import { View as AppointmentView } from './appointment';
 import { View as NotificationView } from './notification';
 import { View as PatientView } from './patient';
-import { View as PrescriptionView } from './prescription';
 import { View as ResultView } from './result';
 import { View as StaffView } from './staff';
 
@@ -61,13 +60,6 @@ const Routes = ({ user, onLogin, onLogout }) => {
         />
         <Route
           exact
-          path="/prescription/:uid(\d+)/"
-          render={(props) => (
-            <PrescriptionView {...props} user={user} page="prescription" />
-          )}
-        />
-        <Route
-          exact
           path="/result/:rid(\d+)?/"
           render={(props) => (
             <ResultView {...props} user={user} page="result" />
@@ -84,13 +76,6 @@ const Routes = ({ user, onLogin, onLogout }) => {
         <Route
           exact
           path="/patient/:uid(\d+)/:menu?/:mid(\d+)?/:action?/"
-          render={(props) => (
-            <PatientView {...props} user={user} page="patient" />
-          )}
-        />
-        <Route
-          exact
-          path="/patient/:uid(\d+)/:menu?/:add/"
           render={(props) => (
             <PatientView {...props} user={user} page="patient" />
           )}
