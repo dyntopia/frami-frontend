@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import { Ipsum } from '../Ipsum';
+import { Home } from '../Home';
 import { Login } from '../Login';
 import { Logout } from '../Logout';
 import { View as AppointmentRequestView } from './appointment-request';
@@ -20,7 +20,7 @@ const Routes = ({ user, onLogin, onLogout }) => {
           path="/"
           render={(props) => (
             user.id ?
-              <Ipsum {...props} /> :
+              <Home {...props} user={user} /> :
               <Redirect to="/login/" />
           )}
         />
