@@ -7,7 +7,6 @@ import { Logout } from '../Logout';
 import { View as AppointmentRequestView } from './appointment-request';
 import { View as AppointmentView } from './appointment';
 import { View as NotificationView } from './notification';
-import { View as PatientView } from './patient';
 import { View as PrescriptionView } from './prescription';
 import { View as QuestionView } from './question';
 import { View as ResultView } from './result';
@@ -79,34 +78,6 @@ const Routes = ({ user, onLogin, onLogout }) => {
           path="/question/:qid(\d+)?/:action?/"
           render={(props) => (
             <QuestionView {...props} user={user} page="question" />
-          )}
-        />
-        <Route
-          exact
-          path="/patient/:uid(\d+)?/"
-          render={(props) => (
-            <PatientView {...props} user={user} page="patient" />
-          )}
-        />
-        <Route
-          exact
-          path="/patient/:uid(\d+)/:menu?/:mid(\d+)?"
-          render={(props) => (
-            <PatientView {...props} user={user} page="patient" />
-          )}
-        />
-        <Route
-          exact
-          path="/patient/:uid(\d+)/:menu?/:add/"
-          render={(props) => (
-            <PatientView {...props} user={user} page="patient" />
-          )}
-        />
-        <Route
-          exact
-          path="/patient/:add/"
-          render={(props) => (
-            <PatientView {...props} user={user} page="patient" />
           )}
         />
         <Route
